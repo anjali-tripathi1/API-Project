@@ -1,0 +1,568 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+<body>
+    <div class="container">
+  <div class="app">
+      <h1>To Do App</h1>
+   <p>Advance version with filter</p>
+  </div>
+
+</div>
+
+<div class="row">
+   <div >
+      <input type="text" placeholder="Task Name" [(ngModel)]="taskObj.taskName"  class="input">
+    </div>
+</div>
+
+<div>
+   <div class="col-12 pt-2">
+      <textarea name="" id="" rows="3" class="text-input" [(ngModel)]="taskObj.taskDescription"  placeholder="Task Description"></textarea>
+   </div>
+</div>
+
+<div>
+   <div >
+       <input type="date" name="" id="textDate" placeholder="dd" class="date" [(ngModel)]="taskObj.createdOn" >
+       <input type="text" placeholder="Enter comma seprated tags" class="tag" [(ngModel)]="taskObj.tags">
+       @if (taskObj.itemId == 0) {
+         <button class="btn" (click)="addTask()">Add Task</button>
+       } @else {
+          <button class="btn" (click)="updateTask()">Update</button>
+       }
+
+    </div>
+
+</div>
+
+
+<div>
+   <div>
+      <button class="btn-3">Filter By Tags</button>
+      <button class="btn-2 btn-btn">Show All</button>
+      <button class="btn-2">Show Completed</button>
+   </div>
+</div>
+
+<div>
+   <div>
+       <button class="btn-4">Tags Group</button>
+       <button class="btn-2 btn-btn">Hobby</button>
+       <button class="btn-2">Holiday</button>
+       <button class="btn-2 btn-btn">Default</button>
+       <button class="btn-2">Financial</button>
+       <button class="btn-2">Fun</button>
+       <button class="btn-2 btn-btn">Emergency</button>
+       <button class="btn-3">Health</button>
+       <button class="btn-2">Work</button>
+       <button class="btn-2 btn-btn">Education</button>
+       <button class="btn-2">Travel</button>
+       <button class="btn-2 btn-btn">Social</button>
+   </div>
+</div>
+
+<div >
+   <div class="container2">
+       <table [border]="5" class="table">
+           <thead>
+               <tr>
+                  <th style="width: 150px; "><strong>Index</strong></th>
+                  <th style="width: 450px;"><strong>Task Name</strong></th>
+                  <th style="width: 200px;"><strong>Due Date</strong></th>
+                  <th style="width: 200px; " ><strong>Tags</strong></th>
+               </tr>
+           </thead>
+
+           <tbody>
+              <tr class="odd" *ngFor="let task of taskList let i = index" >
+                <td class="id " >{{i + 1}}</td>
+                <td>
+                  <div>
+                     <div>
+                          <input type="checkbox" name="" id="" class="checkbox">
+                         <div class="name">{{task.taskName}}</div>
+                         <i class="fa-solid fa-xmark i"></i>
+                     </div>
+                  </div>
+                </td>
+                    <td class="date">{{task.createdOn | date }}</td>
+                    <td style="margin: auto;">
+                    <button class="edit" (click)="onEdit(task)">Edit</button>
+                    <button class="delete" (click)="deleteTask(task.itemId)">Delete</button>
+                 </td>
+               </tr>
+
+
+
+
+              <!-- <tr>
+                  <td class="id">2</td>
+                <td>
+                   <div>
+                      <div>
+                         <input type="checkbox" name="" id="" class="checkbox">
+                         <div class="name">nm, vm</div>
+                         <div>
+                            <i class="fa-solid fa-xmark"></i>
+                         </div>
+                      </div>
+                   </div>
+                    </td>
+                            <td class="date">25-Aug-2025</td>
+                            <td>
+                               <button class="edit">Edit</button>
+                               <button class="delete">Delete</button>
+                            </td>
+                         </tr>
+
+
+
+
+              <tr class="odd">
+                 <td class="id">3</td>
+                <td>
+                   <div>
+                      <div>
+                         <input type="checkbox" name="" id="" class="checkbox" >
+                         <div class="name">abbd</div>
+                         <div>
+                            <i class="fa-solid fa-xmark"></i>
+                         </div>
+                      </div>
+                   </div>
+                   </td>
+                            <td class="date">25-Aug-2025</td>
+                            <td>
+                               <button class="edit">Edit</button>
+                               <button class="delete">Delete</button>
+                            </td>
+
+              </tr>
+
+              <tr>
+                 <td class="id">4</td>
+                <td>
+                   <div>
+                      <div>
+                         <input type="checkbox" name="" id="" class="checkbox">
+                         <div class="name">gswa</div>
+                         <div>
+                            <i class="fa-solid fa-xmark"></i>
+                                     </div>
+                      </div>
+                   </div>
+                </td>
+                            <td class="date">25-Aug-2025</td>
+                            <td>
+                               <button class="edit">Edit</button>
+                               <button class="delete">Delete</button>
+                            </td>
+
+              </tr>
+
+              <tr class="odd">
+                 <td class="id">5</td>
+                <td>
+                   <div>
+                      <div>
+                         <input type="checkbox" name="" id="" class="checkbox">
+                         <div class="name">fdsw,s</div>
+                         <div>
+                            <i class="fa-solid fa-xmark"></i>
+                                  </div>
+                      </div>
+                   </div>
+                </td>
+                            <td class="date">25-Aug-2025</td>
+                            <td>
+                               <button class="edit">Edit</button>
+                               <button class="delete">Delete</button>
+                            </td>
+
+              </tr>
+
+              <tr>
+                 <td class="id">6</td>
+                <td>
+                   <div>
+                      <div>
+                         <input type="checkbox" name="" id="" class="checkbox">
+                         <div class="name">sssa,e</div>
+                         <div>
+                            <i class="fa-solid fa-xmark"></i>
+                                  </div>
+                      </div>
+                   </div>
+                </td>
+                            <td class="date">25-Aug-2025</td>
+                            <td>
+                               <button class="edit">Edit</button>
+                               <button class="delete">Delete</button>
+                            </td>
+
+              </tr>
+
+              <tr class="odd">
+                <td class="id">7</td>
+                <td>
+                   <div>
+                      <div>
+                         <input type="checkbox" name="" id="" class="checkbox">
+                         <div class="name">nm,by</div>
+                         <div>
+                            <i class="fa-solid fa-xmark"></i>
+                                 </div>
+                      </div>
+                   </div>
+                </td>
+                            <td class="date">25-Aug-2025</td>
+                            <td>
+                               <button class="edit">Edit</button>
+                               <button class="delete">Delete</button>
+                            </td>
+
+              </tr>
+
+              <tr>
+                  <td class="id">8</td>
+                <td>
+                   <div>
+                      <div>
+                         <input type="checkbox" name="" id="" class="checkbox">
+                         <div class="name">sds,r</div>
+                         <div>
+                            <i class="fa-solid fa-xmark"></i>
+                                  </div>
+                      </div>
+                   </div>
+                </td>
+                            <td class="date">25-Aug-2025</td>
+                            <td>
+                               <button class="edit">Edit</button>
+                               <button class="delete">Delete</button>
+                            </td>
+
+              </tr>
+
+              <tr class="odd">
+                  <td class="id">9</td>
+                <td>
+                   <div>
+                      <div>
+                         <input type="checkbox" name="" id="" class="checkbox">
+                         <div class="name">vmv</div>
+                         <div>
+                            <i class="fa-solid fa-xmark"></i>
+                               </div>
+                      </div>
+                   </div>
+                </td>
+                            <td class="date">25-Aug-2025</td>
+                            <td>
+                               <button class="edit">Edit</button>
+                               <button class="delete">Delete</button>
+                            </td>
+
+              </tr>
+
+              <tr>
+                 <td class="id">10</td>
+                <td>
+                   <div>
+                      <div>
+                         <input type="checkbox" name="" id="" class="checkbox">
+                         <div class="name">vu</div>
+                         <div>
+                            <i class="fa-solid fa-xmark"></i>
+                                   </div>
+                      </div>
+                   </div>
+                </td>
+                            <td class="date">25-Aug-2025</td>
+                            <td>
+                               <button class="edit">Edit</button>
+                               <button class="delete">Delete</button>
+                            </td>
+
+              </tr>
+
+              <tr class="odd">
+                 <td class="id">11</td>
+                <td>
+                   <div>
+                      <div>
+                         <input type="checkbox" name="" id="" class="checkbox">
+                         <div class="name">ab,f</div>
+                         <div>
+                            <i class="fa-solid fa-xmark"></i>
+                                 </div>
+                      </div>
+                   </div>
+                </td>
+                            <td class="date">25-Aug-2025</td>
+                            <td>
+                               <button class="edit">Edit</button>
+                               <button class="delete">Delete</button>
+                            </td>
+
+              </tr>
+
+              <tr>
+                 <td class="id">12</td>
+                <td>
+                   <div>
+                      <div>
+                         <input type="checkbox" name="" id="" class="checkbox">
+                         <div class="name">vm</div>
+                         <div>
+                            <i class="fa-solid fa-xmark "></i>
+                                  </div>
+                      </div>
+                   </div>
+                </td>
+                            <td class="date">25-Aug-2025</td>
+                            <td>
+                               <button class="edit">Edit</button>
+                               <button class="delete">Delete</button>
+                            </td>
+
+              </tr>
+
+              <tr class="odd">
+                 <td class="id">13</td>
+                <td>
+                   <div>
+                      <div>
+                         <input type="checkbox" name="" id="" class="checkbox">
+                         <div class="name">ccx</div>
+                         <div>
+                            <i class="fa-solid fa-xmark"></i>
+                                 </div>
+                      </div>
+                   </div>
+                </td>
+                            <td class="date">25-Aug-2025</td>
+                            <td>
+                               <button class="edit">Edit</button>
+                               <button class="delete">Delete</button>
+                            </td>
+
+              </tr>
+
+              <tr>
+                 <td class="id">14</td>
+                <td>
+                   <div>
+                      <div>
+                         <input type="checkbox" name="" id="" class="checkbox">
+                         <div class="name">asfa</div>
+                         <div>
+                           <i class="fa-solid fa-xmark"></i>
+                                  </div>
+                      </div>
+                   </div>
+                </td>
+                            <td class="date">25-Aug-2025</td>
+                            <td>
+                               <button class="edit">Edit</button>
+                               <button class="delete">Delete</button>
+                            </td>
+
+              </tr>
+
+              <tr class="odd">
+                 <td class="id">15</td>
+                <td>
+                   <div>
+                      <div>
+                         <input type="checkbox" name="" id="" class="checkbox">
+                         <div class="name">vxsz</div>
+                         <div>
+                            <i class="fa-solid fa-xmark"></i>
+                                  </div>
+                      </div>
+                   </div>
+                </td>
+                            <td class="date">25-Aug-2025</td>
+                            <td>
+                               <button class="edit">Edit</button>
+                               <button class="delete">Delete</button>
+                            </td>
+
+              </tr>
+
+              <tr>
+                 <td class="id">16</td>
+                <td>
+                   <div>
+                      <div>
+                         <input type="checkbox" name="" id="" class="checkbox">
+                         <div class="name">sssa</div>
+                         <div>
+                            <i class="fa-solid fa-xmark"></i>
+                                   </div>
+                      </div>
+                   </div>
+                </td>
+                            <td class="date">25-Aug-2025</td>
+                            <td>
+                               <button class="edit">Edit</button>
+                               <button class="delete">Delete</button>
+                            </td>
+
+              </tr>
+
+              <tr class="odd">
+                 <td class="id">17</td>
+                <td>
+                   <div>
+                      <div>
+                         <input type="checkbox" name="" id="" class="checkbox">
+                         <div class="name">trr,t</div>
+                         <div>
+                            <i class="fa-solid fa-xmark"></i>
+                                  </div>
+                      </div>
+                   </div>
+                </td>
+                            <td class="date">25-Aug-2025</td>
+                            <td>
+                               <button class="edit">Edit</button>
+                               <button class="delete">Delete</button>
+                            </td>
+
+              </tr>
+
+              <tr>
+                 <td class="id">18</td>
+                <td>
+                   <div>
+                      <div>
+                         <input type="checkbox" name="" id="" class="checkbox">
+                         <div class="name">klld</div>
+                         <div>
+                            <i class="fa-solid fa-xmark"></i>
+                                   </div>
+                      </div>
+                   </div>
+                </td>
+                            <td class="date">25-Aug-2025</td>
+                            <td>
+                               <button class="edit">Edit</button>
+                               <button class="delete">Delete</button>
+                            </td>
+
+              </tr>
+
+              <tr class="odd">
+                 <td class="id">19</td>
+                <td>
+                   <div>
+                      <div>
+                         <input type="checkbox" name="" id="" class="checkbox">
+                         <div class="name">mjk</div>
+                         <div>
+                            <i class="fa-solid fa-xmark"></i>
+                               </div>
+                      </div>
+                   </div>
+                </td>
+                            <td class="date">25-Aug-2025</td>
+                            <td>
+                               <button class="edit">Edit</button>
+                               <button class="delete">Delete</button>
+                            </td>
+
+              </tr>
+
+              <tr>
+                 <td class="id">20</td>
+                <td>
+                   <div>
+                      <div>
+                         <input type="checkbox" name="" id="" class="checkbox">
+                         <div class="name">mk</div>
+                         <div>
+                            <i class="fa-solid fa-xmark"></i>
+                                  </div>
+                      </div>
+                   </div>
+                </td>
+                            <td class="date">25-Aug-2025</td>
+                            <td>
+                               <button class="edit">Edit</button>
+                               <button class="delete">Delete</button>
+                            </td>
+
+              </tr>
+
+              <tr class="odd">
+                 <td class="id">21</td>
+                <td>
+                   <div>
+                      <div>
+                         <input type="checkbox" name="" id="" class="checkbox">
+                         <div class="name">ndv</div>
+                         <div>
+                            <i class="fa-solid fa-xmark"></i>
+                                  </div>
+                      </div>
+                   </div>
+                </td>
+                            <td class="date">25-Aug-2025</td>
+                            <td>
+                               <button class="edit">Edit</button>
+                               <button class="delete">Delete</button>
+                            </td>
+
+              </tr>
+
+              <tr>
+                 <td class="id">22</td>
+                <td>
+                   <div>
+                      <div>
+                         <input type="checkbox" name="" id="" class="checkbox">
+                         <div class="name">nm,bs</div>
+                         <div>
+                            <i class="fa-solid fa-xmark"></i>
+                                    </div>
+                      </div>
+                   </div>
+                </td>
+                            <td class="date">25-Aug-2025</td>
+                            <td>
+                               <button class="edit">Edit</button>
+                               <button class="delete">Delete</button>
+                            </td>
+
+              </tr>
+
+              <tr class="odd">
+                 <td class="id">23</td>
+                <td>
+                   <div>
+                      <div>
+                         <input type="checkbox" name="" id="" class="checkbox">
+                         <div class="name">rww</div>
+                         <div>
+                            <i class="fa-solid fa-xmark"></i>
+                                </div>
+                      </div>
+                   </div>
+                </td>
+                            <td class="date">25-Aug-2025</td>
+                            <td>
+                               <button class="edit">Edit</button>
+                               <button class="delete">Delete</button>
+                            </td>
+
+              </tr> -->
+
+           </tbody>
+       </table>
+   </div>
+</div>
+
+</body>
+
+

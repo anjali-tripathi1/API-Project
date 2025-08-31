@@ -1,0 +1,177 @@
+*,
+::after,
+::before{
+   box-sizing: border-box;
+   padding: 0;
+   margin: 0;
+}
+
+
+
+
+.container{
+   width: 100%;
+
+}
+
+.app{
+   text-align: center;
+   background-color: rgba(17, 98, 204, 0.842);
+   margin: 20px 30px;
+   color: #fff;
+   padding: 20px;
+   border-radius: 10px;
+   line-height: 1.5;
+}
+
+.input{
+   width: 600px;
+   height: 40px;
+   border-radius: 10px;
+   font-size: 15px;
+   padding: 10px;
+   border: 1px solid #000;
+   margin: 10px 30px;
+}
+
+.text-input{
+   width: 95%;
+   height: 100px;
+   border-radius: 10px;
+   font-size: 15px;
+   padding: 10px;
+   border: 1px solid #000;
+   margin: 3px 30px;
+}
+
+.date{
+   width: 150px;
+   border-radius: 5px;
+   height: 40px;
+   margin: 10px 30px;
+   border: 1px solid #000;
+   font-size: 16px;
+   padding: 10px;
+}
+
+.btn{
+  display: inline-block;
+   background-color: #0bb457;
+   border-radius: 5px;
+   width: 100px;
+   height: 40px;
+   color: #fff;
+   margin: 0 20px;
+   font-size: 16px;
+   border: none;
+}
+
+.tag{
+   display: inline-block;
+   width: 500px;
+   height: 40px;
+   border: 1px solid #000;
+   border-radius: 5px;
+   font-size: 16px;
+   padding: 10px;
+}
+
+.btn-2{
+   background-color: #247e42;
+   color: black;
+   width: 150px;
+   height: 40px;
+   border-radius: 10px;
+   font-weight: bold;
+   font-size: 15px;
+   margin: 10px 5px;
+   border: none;
+}
+
+.btn-3{
+   background-color: #347bcd;
+   color: #fff;
+   width: 150px;
+   height: 40px;
+   border-radius: 10px;
+   font-weight: bold;
+   font-size: 15px;
+   margin: 10px 5px 10px 30px;
+   border: none;
+}
+
+.btn-4{
+   background-color: #504040;
+   color: #fff;
+   width: 150px;
+   height: 40px;
+   border-radius: 10px;
+   font-weight: bold;
+   font-size: 15px;
+   margin: 10px 30px;
+   border: none;
+}
+
+.btn-btn{
+   background-color: #572222;
+   color: #fff;
+}
+
+.table{
+    width: 95%;
+
+    margin: 10px 30px;
+}
+
+.id{
+   text-align: center;
+}
+
+.edit{
+   background-color: yellow;
+   color: #000;
+   padding: 15px;
+   border-radius: 20px;
+   margin: 10px;
+   border: none;
+
+
+
+}
+
+.delete{
+   background-color: red;
+   color: #fff;
+   padding: 15px;
+   border-radius: 20px;
+   margin: 10px;
+   border: none;
+
+}
+
+.date{
+   text-align: center;
+   padding: 5px;
+}
+
+i{
+   position: relative;
+   bottom: 20px;
+   left: 90%;
+}
+
+.checkbox{
+   position: relative;
+   top: 22px;
+   left: 10px;
+}
+
+.name{
+  position: relative;
+  left: 50px;
+  font-size: 18px;
+}
+
+.odd{
+   background-color: #f0f0f0;
+}
